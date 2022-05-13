@@ -1,0 +1,90 @@
+.close {
+    position: absolute;
+    top: 600px;
+    justify-content: center;
+    border-radius: 9999px;
+    left: 29px;
+}
+
+.pagName {
+    position: absolute;
+    height: 27px;
+    left: 150px;
+    top: 209px;
+    text-transform: uppercase;
+}
+
+.ionInput {
+    width: 80%;
+    height: 33px;
+    top: 312px;
+    left: 29px;
+    right: 29px;
+    position: absolute;
+    background-color: white;
+    border-style: groove;
+    box-sizing: border-box;
+    border: 1px solid #8E51FF;
+    border-radius: 4px;
+    color: #8E51FF;
+    display: block;
+    justify-content: center;
+
+}
+
+.Pass {
+    width: 80%;
+    height: 33px;
+    top: 389px;
+    left: 29px;
+    position: absolute;
+    background-color: white;
+    border-style: groove;
+    box-sizing: border-box;
+    border: 1px solid #8E51FF;
+    border-radius: 4px;
+    color: #8E51FF;
+    display: block;
+
+}
+
+.inputTitle {
+    font-size: 12px;
+    position: absolute;
+    top: 283px;
+    left: 12px;
+    color: #8E51FF;
+    font-weight: bold;
+}
+
+.passTitle {
+    font-size: 12px;
+    position: absolute;
+    top: 361px;
+    left: 12px;
+    color: #8E51FF;
+    font-weight: bold;
+}
+
+.ascessButton {
+    position: absolute;
+    width: 80%;
+    height: 33px;
+    left: 29px;
+    top: 512px;
+    border-radius: 4px;
+    background-image: -moz-linear-gradient(#8E51FF, #5651D4);
+
+}
+
+.checkBox {
+    box-sizing: border-box;
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 137px;
+    top: 565px;
+    background: #FFFFFF;
+    border: 1px solid #8E51FF;
+    border-radius: 4px
+}
