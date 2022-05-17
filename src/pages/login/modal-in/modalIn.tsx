@@ -31,9 +31,17 @@ class ModalIn extends React.Component<{open:boolean,openInFalse:any,vaPara:any}>
         if(resultado.data.status === 'falha'){
             this.setState({resultado:'falha',msgErro: resultado.data.erro})
         } else{
+            let dados = resultado.data.linhas[0]
             this.props.openInFalse()
-            localStorage.setItem('id',resultado.data.linhas[0].id)
-            this.props.vaPara('/avatar')
+            localStorage.setItem('id',dados.id)
+            if(dados.foto == null){
+                this.props.vaPara('/avatar')
+            } else if (dados.topicos == null){
+                this.props.vaPara('/topicos')
+            } else {
+                this.props.vaPara('/feed')
+            }
+            
             //this.setState({resultado: 'ok'})
             
             //window.location('/avatar')

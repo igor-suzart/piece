@@ -41,7 +41,7 @@ class Login extends React.Component{
         return(
         <IonPage>
             <ModalIn open={this.state.openIn} openInFalse={this.openInFalse} vaPara={this.vaPara} />
-            <ModalUp open={this.state.openUp} openUpFalse={this.openUpFalse}/>
+            <ModalUp open={this.state.openUp} openUpFalse={this.openUpFalse} vaPara={this.vaPara}/>
             <div className="logo">
                 <img src={PieceLogo} alt="logo" />
             </div>

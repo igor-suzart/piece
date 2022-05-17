@@ -4,7 +4,7 @@ import {closeCircleOutline} from 'ionicons/icons/'
 import '../modal.scss'
 import validator from '../../../shared/validator';
 import login from '../../../shared/services/login';
-class ModalUp extends React.Component<{open:boolean,openUpFalse:any}> {
+class ModalUp extends React.Component<{open:boolean,openUpFalse:any,vaPara:any}> {
     state = {
         nome: '',
         email: '',
@@ -51,7 +51,10 @@ class ModalUp extends React.Component<{open:boolean,openUpFalse:any}> {
             if(resultado.data.status === 'falha'){
                 this.setState({finalErro: true,finalMsgErro: 'Email já cadastrado'})
             } else {
-                //aqui eu vou mudar a rota
+                //PRECISO PEGAR O ID APÓS O CADASTRO
+                localStorage.setItem('id',resultado.data.id)
+                this.props.openUpFalse()
+                this.props.vaPara('/avatar')
             }
             console.log(resultado);
             
