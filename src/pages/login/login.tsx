@@ -5,15 +5,23 @@ import PieceLogo from '../../assets/logo/logo-horizontal.svg'
 import './login.scss'
 import ModalIn from './modal-in/modalIn'
 import ModalUp from './modal-up/modalUp'
+import  { Redirect } from 'react-router-dom' 
 class Login extends React.Component{
     constructor(props:any){
         super(props)
         this.openInFalse =  this.openInFalse.bind(this)
         this.openUpFalse =  this.openUpFalse.bind(this)
+        this.vaPara = this.vaPara.bind(this)
     }
     state = {
         openIn:false,
-        openUp:false
+        openUp:false,
+        ir: ''
+    }
+    vaPara(rota:string){      
+        this.setState({
+            ir:rota
+        })
     }
     openInFalse(){      
         this.setState({
@@ -27,9 +35,12 @@ class Login extends React.Component{
     }
     // .setState({open:false})
     render(){
+        if(this.state.ir != ''){
+            return <Redirect to={this.state.ir} />
+        }
         return(
         <IonPage>
-            <ModalIn open={this.state.openIn} openInFalse={this.openInFalse} />
+            <ModalIn open={this.state.openIn} openInFalse={this.openInFalse} vaPara={this.vaPara} />
             <ModalUp open={this.state.openUp} openUpFalse={this.openUpFalse}/>
             <div className="logo">
                 <img src={PieceLogo} alt="logo" />

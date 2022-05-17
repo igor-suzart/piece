@@ -24,6 +24,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Avatar from './pages/avatar/avatar';
 
 setupIonicReact();
 
@@ -39,6 +40,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path='/home'>
           <Home />
+        </Route>
+        <Route exact path='/avatar'>
+          <Avatar />
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
