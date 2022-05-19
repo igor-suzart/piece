@@ -1,5 +1,7 @@
 {
   "name": "piece",
-  "integrations": {},
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "react"
 }

@@ -34,13 +34,13 @@ class ModalIn extends React.Component<{open:boolean,openInFalse:any,vaPara:any}>
             let dados = resultado.data.linhas[0]
             this.props.openInFalse()
             localStorage.setItem('id',dados.id)
-            if(dados.foto == null){
-                this.props.vaPara('/avatar')
-            } else if (dados.topicos == null){
-                this.props.vaPara('/topicos')
-            } else {
+            // if(dados.foto == null){
+            //     this.props.vaPara('/avatar')
+            // } else if (dados.topicos == null){
+            //     this.props.vaPara('/topicos')
+            // } else {
                 this.props.vaPara('/feed')
-            }
+           // }
             
             //this.setState({resultado: 'ok'})
             
