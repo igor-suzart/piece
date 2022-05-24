@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react'
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonButton,IonModal } from '@ionic/react';
-import PieceLogo from '../../assets/logo/logo-horizontal.svg'
+import PieceLogo from '../../assets/logo/logo-piece.svg'
 import './login.scss'
 import ModalIn from './modal-in/modalIn'
 import ModalUp from './modal-up/modalUp'
@@ -39,7 +39,7 @@ class Login extends React.Component{
             return <Redirect to={this.state.ir} />
         }
         return(
-        <IonPage>
+        <IonPage className='login'>
             <ModalIn open={this.state.openIn} openInFalse={this.openInFalse} vaPara={this.vaPara} />
             <ModalUp open={this.state.openUp} openUpFalse={this.openUpFalse} vaPara={this.vaPara}/>
             <div className="logo">
@@ -47,6 +47,9 @@ class Login extends React.Component{
             </div>
             <div className="buttons">
                 <IonTitle className='title'>Entre</IonTitle>
+                {/* <IonButton color='success' expand="block" onClick={ () => {
+                    this.setState({ir:'feed'})
+                }}>Feed</IonButton> */}
                 <IonButton color='primary' expand="block" onClick={ () => {
                     this.setState({openIn:true})
                 }}>Login</IonButton>
