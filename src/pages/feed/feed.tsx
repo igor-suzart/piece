@@ -4,6 +4,7 @@ import feed from '../../shared/services/feed'
 import "./feed.scss"
 import {heart,banOutline,chatbox} from 'ionicons/icons/'
 import FeedAcoes from './acoes'
+import Abas from './abas'
 class Feed extends React.Component{
     state = {
         feed: [],
@@ -11,10 +12,10 @@ class Feed extends React.Component{
     }
     height = window.screen.height;
     async componentDidMount(){
-        var meuFeed = await feed.getMainFeed(1)
-        this.setState({feed:meuFeed.data.articles})
-        // var meuFeed:any = feed.offlineFeed
-        // this.setState({feed:meuFeed})
+        // var meuFeed = await feed.getMainFeed(1)
+        // this.setState({feed:meuFeed.data.articles})
+        var meuFeed:any = feed.offlineFeed
+        this.setState({feed:meuFeed})
         console.log(meuFeed);
              
     }
@@ -65,6 +66,7 @@ class Feed extends React.Component{
                         <h4>Nenhuma Noticia carregada</h4>
                     </div>                            
                 }
+                <Abas />
             </IonContent>
 
         )
