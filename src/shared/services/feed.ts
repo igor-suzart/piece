@@ -141,6 +141,6 @@ export default{
       return await axios.get(`${ambiente.apiUrl}/feed/getNotComents?idNot=${idNot}`)
     },
     async getLinkConteudo(link:string){
-      return await axios.get(`https://opengraph.io/api/1.0/site/${link}`)
+      return await axios.get(`https://opengraph.io/api/1.1/site/${link}?app_id=b8ad8db6-d4b2-4121-81ae-f636b7283ed5`)
     }
 }
