@@ -27,7 +27,7 @@ import Home from './pages/Home';
 import Login from './pages/login/login'
 import Avatar from './pages/avatar/avatar';
 import Feed from './pages/feed/feed';
-import { useEffect } from 'react';
+import Post from './pages/feed/post/post'
 
 setupIonicReact();
 const App: React.FC = (props) => {
@@ -56,13 +56,16 @@ const App: React.FC = (props) => {
         <Route exact path='/feed'>
           <Feed />
         </Route>
+        <Route exact path='/post'>
+          <Post />
+        </Route>
     </IonReactRouter>
     {local.pathname !== '/login' && local.pathname != '/'
     ? 
     <IonTabs>
       <IonRouterOutlet></IonRouterOutlet>
       <IonTabBar slot="bottom">
-        <IonTabButton tab="feed" target='/feed'>
+        <IonTabButton tab="feed" href='/feed'>
           <IonIcon icon={newspaperOutline}></IonIcon>
           {/* <IonLabel>Notícias</IonLabel> */}
         </IonTabButton>
@@ -70,7 +73,7 @@ const App: React.FC = (props) => {
           <IonIcon icon={searchOutline}></IonIcon>
           {/* <IonLabel>Pesquisa</IonLabel> */}
         </IonTabButton>
-        <IonTabButton tab="add">
+        <IonTabButton tab="add" href='/post'>
           <IonIcon icon={addCircle}></IonIcon>
           {/* <IonLabel>Adicionar</IonLabel> */}
         </IonTabButton>

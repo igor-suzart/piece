@@ -51,3 +51,15 @@ html{
         }
     }
 }
+.sem-not{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    *{
+        color: #585858;
+    }
+    ion-icon{
+        font-size: 36px;
+    }
+}

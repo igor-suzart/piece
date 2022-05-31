@@ -136,5 +136,11 @@ export default{
     },
     async getAcoes(idNot:string,idUser:any){
       return await axios.get(`${ambiente.apiUrl}/feed/getAcao?idNot=${idNot}&idUser=${idUser}`)
+    },
+    async getPostComents(idNot:string){
+      return await axios.get(`${ambiente.apiUrl}/feed/getNotComents?idNot=${idNot}`)
+    },
+    async getLinkConteudo(link:string){
+      return await axios.get(`https://opengraph.io/api/1.0/site/${link}`)
     }
 }

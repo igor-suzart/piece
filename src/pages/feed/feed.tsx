@@ -1,17 +1,22 @@
-import { IonContent, IonIcon, IonPage } from '@ionic/react'
+import { IonContent, IonIcon, IonPage, IonProgressBar } from '@ionic/react'
 import React from 'react'
 import feed from '../../shared/services/feed'
 import "./feed.scss"
 import {heart,banOutline,chatbox} from 'ionicons/icons/'
 import FeedAcoes from './acoes'
-import Abas from './abas'
 class Feed extends React.Component{
     state = {
         feed: [],
         scroll: 0,
+
     }
     height = window.screen.height;
     async componentDidMount(){
+        var id = localStorage.getItem('id')
+        if(!id){
+            console.log('n to logado');
+            
+        }
         // var meuFeed = await feed.getMainFeed(1)
         // this.setState({feed:meuFeed.data.articles})
         var meuFeed:any = feed.offlineFeed
@@ -45,12 +50,14 @@ class Feed extends React.Component{
                 ?   this.state.feed.map((not:any,ind:number) =>{
                     return(
                         <div className='noticia' key={ind} id={'not'+ind}>
-                            <div className="main">
-                                <img src={not.image} alt={not.description} />
-                            </div>
-                            <div className="title">
-                                <h5>{not.title}</h5>
-                                
+                            <div style={{overflow: 'hidden'}}>
+                                <div className="main" onClick={()=> console.log('cliquei')}>
+                                    <img src={not.image} alt={not.description} />
+                                </div>
+                                <div className="title">
+                                    <h5>{not.title}</h5>
+                                    
+                                </div>
                             </div>
                             <div className="desc">
                             <p>{not.description}</p>
@@ -62,11 +69,11 @@ class Feed extends React.Component{
 
                                         )
                     }) 
-                    : <div>
-                        <h4>Nenhuma Noticia carregada</h4>
+                    : <div style={{display: 'flex',flexDirection: 'column',justifyContent: 'center',alignItems: 'center'}}>
+                        <h6>Carregando notícias</h6>
+                        <IonProgressBar color='primary'></IonProgressBar>
                     </div>                            
                 }
-                <Abas />
             </IonContent>
 
         )

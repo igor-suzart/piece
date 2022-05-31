@@ -1,5 +1,5 @@
 import { IonIcon } from "@ionic/react";
-import { banOutline, chatbox, heart } from "ionicons/icons";
+import { banOutline, chatbox, heart,chatbubbles } from "ionicons/icons";
 import React from "react";
 import feed from "../../shared/services/feed";
 import Opiniao from "./opiniao/opiniao";
@@ -7,7 +7,8 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
     state = {
         curti: false,
         nCurti: false,
-        modal: false
+        modal: false,
+        coments: []
     }
     constructor(props:any){
         super(props)
@@ -19,17 +20,29 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
     }
     async componentDidMount(){
         let id = localStorage.getItem('id')
-        var tenhoAcoes = await feed.getAcoes(this.props.idNot,id)
-        console.log(tenhoAcoes);
-        if(tenhoAcoes.data.linhas.length > 0){
-            tenhoAcoes.data.linhas.forEach((pc:any) => {
-                if(pc.curtida == 1 || pc.curtida == '1'){
-                    this.setState({curti:true})
-                } else if(pc.dislike == 1 || pc.dislike == '1'){
-                    this.setState({nCurti:true})
-                }
-            });
+        if(!id){
+            console.log('tratar dps');
+            
+        } else{
+            var tenhoAcoes = await feed.getAcoes(this.props.idNot,id)
+            if(tenhoAcoes.data.linhas.length > 0){
+                tenhoAcoes.data.linhas.forEach((pc:any) => {
+                    if(pc.curtida == 1 || pc.curtida == '1'){
+                        this.setState({curti:true})
+                    } else if(pc.dislike == 1 || pc.dislike == '1'){
+                        this.setState({nCurti:true})
+                    }
+                });
+            }
+            var tenhocomentarios = await feed.getPostComents(this.props.idNot)
+            if(tenhocomentarios.data.linhas.length > 0){
+                this.setState({coments: tenhocomentarios.data.linhas})
+            } else {
+                this.setState({coments: []})
+            }
+            
         }
+
         
 
     }
@@ -76,6 +89,13 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                     <IonIcon icon={chatbox} onClick={() => this.setState({modal:true})}></IonIcon>
                 </div>
                 <hr />
+                {this.state.coments.length > 0 
+                ? <h1>noticias tops</h1>
+                : <div className="sem-not">
+                    <h6>Sem comentários nessa notícia</h6>
+                    <IonIcon icon={chatbubbles}></IonIcon>
+                </div>
+            }
             </div>
 
         )
