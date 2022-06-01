@@ -1,4 +1,4 @@
-import { IonHeader, IonInput, IonPage, IonToolbar } from "@ionic/react";
+import { IonHeader, IonInput, IonPage, IonToolbar, IonText } from "@ionic/react";
 import React from "react";
 import feed from "../../../shared/services/feed";
 import "./post.scss"
@@ -27,8 +27,13 @@ class Post extends React.Component{
                     <h6>Publique uma notícia!</h6>
                 </IonToolbar>
             </IonHeader>
+           <div>
+            <IonText color='primary'>
+                <p>Insira o Link</p>
+            </IonText>
             <IonInput className="ionInput" placeholder="Insira o link da noticia" value={this.state.link} 
             onChange={this.lideLink} onBlur={this.lideLink}></IonInput>
+            </div>
         </IonPage>
 
         )

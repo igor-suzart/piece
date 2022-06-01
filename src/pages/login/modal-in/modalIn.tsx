@@ -82,7 +82,7 @@ class ModalIn extends React.Component<{open:boolean,openInFalse:any,vaPara:any}>
                     </IonText>
                     <IonInput className="ionInput" value={this.state.email} onChange={(e:any) => this.setState({email:e.target.value})} onBlur={(e:any) => this.setState({email:e.target.value})} placeholder="Digite seu email"> </IonInput>
                     <IonText color='primary'>
-                        <p>Senha:</p>
+                        <p>Insita seu Link</p>
                     </IonText>
                     <IonInput className="ionInput" type="password" value={this.state.senha} onChange={(e:any) => this.setState({senha: e.target.value}) } onBlur={(e:any) => this.setState({senha: e.target.value}) } placeholder="Password"></IonInput>
                     <div className="check">
