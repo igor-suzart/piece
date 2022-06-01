@@ -8,7 +8,8 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
         curti: false,
         nCurti: false,
         modal: false,
-        coments: []
+        coments: [],
+        jaAbri: false
     }
     constructor(props:any){
         super(props)
@@ -34,7 +35,7 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                     }
                 });
             }
-            var tenhocomentarios = await feed.getPostComents(this.props.idNot)
+            var tenhocomentarios = await feed.getPostComents(this.props.idNot,2)
             if(tenhocomentarios.data.linhas.length > 0){
                 this.setState({coments: tenhocomentarios.data.linhas})
             } else {
@@ -76,7 +77,10 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
     render(){
         return(
             <div className="acoes">
-                <Opiniao open={this.state.modal} close={this.modal} id={this.props.idNot} />
+                {this.state.modal || this.state.jaAbri
+                ? <Opiniao open={this.state.modal} close={this.modal} id={this.props.idNot} />
+                : '' }
+                
                 <div className="actions">
                     <IonIcon icon={heart} 
                     color={this.state.curti ? 'danger' : ''} 
@@ -86,7 +90,7 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                     <IonIcon icon={banOutline} 
                     color={this.state.nCurti ? 'warning' : ''} 
                     onClick={() =>this.dislike()}></IonIcon>
-                    <IonIcon icon={chatbox} onClick={() => this.setState({modal:true})}></IonIcon>
+                    <IonIcon icon={chatbox} onClick={() => this.setState({modal:true,jaAbri:true})}></IonIcon>
                 </div>
                 <hr />
                 {this.state.coments.length > 0 
