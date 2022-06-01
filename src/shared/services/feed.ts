@@ -137,10 +137,13 @@ export default{
     async getAcoes(idNot:string,idUser:any){
       return await axios.get(`${ambiente.apiUrl}/feed/getAcao?idNot=${idNot}&idUser=${idUser}`)
     },
-    async getPostComents(idNot:string){
-      return await axios.get(`${ambiente.apiUrl}/feed/getNotComents?idNot=${idNot}`)
+    async getPostComents(idNot:string,limit:number){
+      return await axios.get(`${ambiente.apiUrl}/feed/getNotComents?idNot=${idNot}&limit=${limit}`)
     },
     async getLinkConteudo(link:string){
       return await axios.get(`https://opengraph.io/api/1.1/site/${link}?app_id=b8ad8db6-d4b2-4121-81ae-f636b7283ed5`)
+    },
+    async postComent(coment:string,idNot:string,idUser:string){
+      return await axios.post(`${ambiente.apiUrl}/feed/postNotComent?coment=${coment}&idNot=${idNot}&idUser=${idUser}`)
     }
 }
