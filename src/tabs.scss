@@ -1,4 +1,9 @@
 .ion-tabs{
     height: 8% !important;
     top: 92% !important;
+    ion-tab-bar{
+      background: rgb(142,81,255);
+      background: linear-gradient(90deg, rgba(142,81,255,1) 0%, rgba(86,81,212,1) 100%) !important;
+      --ion-color-base: unset !important
+    }
   }

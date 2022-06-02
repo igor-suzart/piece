@@ -64,7 +64,7 @@ const App: React.FC = (props) => {
     ? 
     <IonTabs>
       <IonRouterOutlet></IonRouterOutlet>
-      <IonTabBar slot="bottom">
+      <IonTabBar slot="bottom" color="primary">
         <IonTabButton tab="feed" href='/feed'>
           <IonIcon icon={newspaperOutline}></IonIcon>
           {/* <IonLabel>Notícias</IonLabel> */}

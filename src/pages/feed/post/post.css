@@ -1,0 +1,46 @@
+.post {
+  color: #fff;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.post ion-toolbar {
+  padding: 0 .75rem;
+}
+
+.post .insira {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.post .insira ion-input {
+  width: auto;
+  background-color: #fff;
+  border: 1px solid #8e51ff;
+  border-radius: .25rem;
+  color: #8e51ff;
+}
+
+.post ion-card {
+  padding: 0.5rem;
+}
+
+.post ion-card .flex {
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
+}
+
+.post .previewNot {
+  height: 88%;
+}
+
+.post .nolink {
+  display: flex;
+  justify-content: center;
+  color: #888888;
+}

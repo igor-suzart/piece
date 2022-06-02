@@ -134,6 +134,9 @@ export default{
     async postDislike(idNot:string,idUser:any){
       return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&dislike=1`)
     },
+    async postComentario(idNot:string,idUser:any,comentario:string){
+      return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&comentario=${comentario}`)
+    },
     async getAcoes(idNot:string,idUser:any){
       return await axios.get(`${ambiente.apiUrl}/feed/getAcao?idNot=${idNot}&idUser=${idUser}`)
     },
@@ -143,7 +146,8 @@ export default{
     async getLinkConteudo(link:string){
       return await axios.get(`https://opengraph.io/api/1.1/site/${link}?app_id=b8ad8db6-d4b2-4121-81ae-f636b7283ed5`)
     },
-    async postComent(coment:string,idNot:string,idUser:string){
-      return await axios.post(`${ambiente.apiUrl}/feed/postNotComent?coment=${coment}&idNot=${idNot}&idUser=${idUser}`)
+    async noticias(data:Object){
+      let myData = JSON.stringify(data)
+      return await axios.post(`${ambiente.apiUrl}/feed/postNoticia?data=${myData}`)
     }
 }

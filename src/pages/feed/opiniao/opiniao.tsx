@@ -13,8 +13,12 @@ class Opiniao extends React.Component<{id:any,open:boolean,close:any}>{
         this.setState({opns: opn})
         
     }
-    postOpn(){
+    async postOpn(){
         console.log(this.state.minhaOpn);
+        var id = localStorage.getItem('id')
+        var resultado = await feed.postComentario(this.props.id,id,this.state.minhaOpn)
+        console.log(resultado);
+        
         
     }
     render(){
