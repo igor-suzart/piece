@@ -28,6 +28,7 @@ import Login from './pages/login/login'
 import Avatar from './pages/avatar/avatar';
 import Feed from './pages/feed/feed';
 import Post from './pages/feed/post/post'
+import Votar from './pages/feed/votar'
 
 setupIonicReact();
 const App: React.FC = (props) => {
@@ -59,6 +60,9 @@ const App: React.FC = (props) => {
         <Route exact path='/post'>
           <Post />
         </Route>
+        <Route exact path='/votar'>
+          <Votar />
+        </Route>
     </IonReactRouter>
     {local.pathname !== '/login' && local.pathname != '/'
     ? 
@@ -77,7 +81,7 @@ const App: React.FC = (props) => {
           <IonIcon icon={addCircle}></IonIcon>
           {/* <IonLabel>Adicionar</IonLabel> */}
         </IonTabButton>
-        <IonTabButton tab="votar">
+        <IonTabButton tab="votar" href='/votar'>
           <IonIcon icon={trailSignOutline}></IonIcon>
           {/* <IonLabel>votar</IonLabel> */}
         </IonTabButton>

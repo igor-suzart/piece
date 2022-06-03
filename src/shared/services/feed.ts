@@ -137,6 +137,9 @@ export default{
     async postComentario(idNot:string,idUser:any,comentario:string){
       return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&comentario=${comentario}`)
     },
+    async postAcao(idNot:string,idUser:any,comentario?:string,like?:number,dislike?:number){
+      return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&comentario=${comentario}&like=${like}&dislike=${dislike}`)
+    },
     async getAcoes(idNot:string,idUser:any){
       return await axios.get(`${ambiente.apiUrl}/feed/getAcao?idNot=${idNot}&idUser=${idUser}`)
     },
@@ -149,5 +152,8 @@ export default{
     async noticias(data:Object){
       let myData = JSON.stringify(data)
       return await axios.post(`${ambiente.apiUrl}/feed/postNoticia?data=${myData}`)
+    },
+    async GetNoticiasPublicas(page:number){
+      return await axios.get(`${ambiente.apiUrl}/feed/getNotPubli?page=${page}`)
     }
 }
