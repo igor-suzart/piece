@@ -25,19 +25,23 @@ class Post extends React.Component<props,linkInfo>{
     }
     async postNot(){
         let data = {
-            title: this.state.linkInfo['openGraph'].title,
-            description: this.state.linkInfo['openGraph'].description,
-            url: this.state.linkInfo['openGraph'].url,
-            image: this.state.linkInfo['openGraph'].image.url ,
-            sourceUrl: this.state.linkInfo['openGraph'].url,
-            name: this.state.linkInfo['openGraph'].site_name ? this.state.linkInfo['openGraph'].site_name : this.state.linkInfo['hybridGraph'].site_name,
+            title: encodeURIComponent(this.state.linkInfo['openGraph'].title),
+            description: encodeURIComponent(this.state.linkInfo['openGraph'].description),
+            url: encodeURIComponent(this.state.linkInfo['openGraph'].url),
+            image: encodeURIComponent(this.state.linkInfo['openGraph'].image.url) ,
+            sourceUrl: encodeURIComponent(this.state.linkInfo['openGraph'].url),
+            name: this.state.linkInfo['openGraph'].site_name ? encodeURIComponent(this.state.linkInfo['openGraph'].site_name) : this.state.linkInfo['hybridGraph'].site_name ? encodeURIComponent(this.state.linkInfo['hybridGraph'].site_name) : encodeURIComponent(this.state.linkInfo['htmlInferred'].site_name),
         }
-        let resultado = await feed.noticias(data)
+        let resultado = await feed.noticias(JSON.stringify(data))
         console.log(resultado);
+        
+        
         if(resultado.data.status == 'falha'){
             if(resultado.data.erro.sqlMessage.includes('Duplicate entry')){
                 this.setState({status: 'Notícia já cadastrada!',showAlerta: true})
             }
+        } else if(!resultado){
+            this.setState({status: 'Notícia invalida!',showAlerta: true})
         }
         else{
             this.setState({status: 'Notícia cadastrada com sucesso!',showAlerta: true})

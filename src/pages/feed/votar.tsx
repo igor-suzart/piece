@@ -3,6 +3,7 @@ import React from 'react'
 import feed from '../../shared/services/feed'
 import "./feed.scss"
 import {heart,banOutline,chatbox, checkmarkCircle, closeCircle} from 'ionicons/icons/'
+import VotarAcao from './votarAcao'
 
 class Votar extends React.Component{
     state = {
@@ -27,23 +28,6 @@ class Votar extends React.Component{
         console.log(meuFeed);
              
     }
-    async postarVoto(){
-        let idUser = localStorage.getItem('id')
-        let idNot = this.state.minhaNoticia
-        let justi = this.state.justificativa
-        let like:number = 0
-        let dislike:number = 0
-        if(this.state.voto.includes('success')){
-            like = 1
-        } else {
-            dislike = 1
-        }
-        var resultado = await feed.postAcao(idNot,idUser,justi,like,dislike)
-        if(resultado.data.status === 'ok'){
-            this.setState({votei:false,voto: '',justificativa: '',minhaNot: ''})
-        }
-        console.log(resultado)
-    }
     render(){
         return(
             <IonContent fullscreen={true} scrollEvents={true} onIonScrollStart={(event:any)=>{
@@ -66,23 +50,6 @@ class Votar extends React.Component{
                 
             }}
             onIonScroll={(e:any) => e.preventDefault()} onIonScrollEnd={(e:any) => e.preventDefault()}>
-                <IonPopover
-                className={this.state.voto}
-                isOpen={this.state.votei}
-                onDidDismiss={() => this.setState({votei:false,voto: '',justificativa: '',minhaNot: ''})}
-                >
-                    <h1>Finalize seu voto!</h1>
-                    <IonIcon size='' icon={this.state.voto.includes('success') ? checkmarkCircle : closeCircle}></IonIcon>
-                    <div className="enviar">
-                        <IonInput placeholder='quer justificar seu voto?' 
-                        value={this.state.justificativa}
-                        onChange={(e:any) => this.setState({justificativa: e.target.value})}
-                        onBlur={(e:any) => this.setState({justificativa: e.target.value})}></IonInput>
-                        <IonButton color='light' onClick={() => this.postarVoto()}>Enviar!</IonButton>
-                    </div>
-                    
-
-                </IonPopover>
                 {this.state.feed.length > 0 
                 ?   this.state.feed.map((not:any,ind:number) =>{
                     return(
@@ -101,15 +68,7 @@ class Votar extends React.Component{
                             <p><a href={not.url}>{not.name}</a></p>
                             </div>
                             <hr/>
-                            <div className="votar">
-                                <IonButton size='large' onClick={() => {
-                                    this.setState({votei: true,voto: 'meuPop success',minhaNoticia: not.url})
-                                }} color='success'>Fato!</IonButton>
-
-                                <IonButton size='large' onClick={() => {
-                                    this.setState({votei: true,voto: 'meuPop danger',minhaNoticia: not.url})
-                                }} color='danger'>Fake!</IonButton>
-                            </div>
+                            <VotarAcao id={not.id} />
 
                             {/* <FeedAcoes idNot={not.url} indice={ind} /> */}
 

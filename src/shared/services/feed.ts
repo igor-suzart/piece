@@ -1,6 +1,7 @@
 import ambiente from "../ambiente"
 import axios from 'axios'
 
+
 export default{
     async getMainFeed(page:number){
         return await axios.get(`${ambiente.gnews}/top-headlines?token=${ambiente.gnewsKey}
@@ -137,8 +138,8 @@ export default{
     async postComentario(idNot:string,idUser:any,comentario:string){
       return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&comentario=${comentario}`)
     },
-    async postAcao(idNot:string,idUser:any,comentario?:string,like?:number,dislike?:number){
-      return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&comentario=${comentario}&like=${like}&dislike=${dislike}`)
+    async postAcao(idNot:string,idUser:any,comentario?:string,like?:number,dislike?:number,nVeri?:number){
+      return await axios.post(`${ambiente.apiUrl}/feed/acao?idNot=${idNot}&idUser=${idUser}&comentario=${comentario}&like=${like}&dislike=${dislike}&naoVerificada=${nVeri}`)
     },
     async getAcoes(idNot:string,idUser:any){
       return await axios.get(`${ambiente.apiUrl}/feed/getAcao?idNot=${idNot}&idUser=${idUser}`)
@@ -149,11 +150,14 @@ export default{
     async getLinkConteudo(link:string){
       return await axios.get(`https://opengraph.io/api/1.1/site/${link}?app_id=b8ad8db6-d4b2-4121-81ae-f636b7283ed5`)
     },
-    async noticias(data:Object){
-      let myData = JSON.stringify(data)
-      return await axios.post(`${ambiente.apiUrl}/feed/postNoticia?data=${myData}`)
+    async noticias(data:string){
+      
+      return await axios.post(`${ambiente.apiUrl}/feed/postNoticia?data=${data}`)
     },
     async GetNoticiasPublicas(page:number){
       return await axios.get(`${ambiente.apiUrl}/feed/getNotPubli?page=${page}`)
+    },
+    async getAcaoNaoVeri(idNot:string){
+      return await axios.get(`${ambiente.apiUrl}/feed/getAcaoNaoVeri?idNot=${idNot}`)
     }
 }

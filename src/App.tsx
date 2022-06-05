@@ -29,15 +29,25 @@ import Avatar from './pages/avatar/avatar';
 import Feed from './pages/feed/feed';
 import Post from './pages/feed/post/post'
 import Votar from './pages/feed/votar'
+import { useEffect, useState } from 'react';
+import login from './shared/services/login';
 
 setupIonicReact();
 const App: React.FC = (props) => {
-  var local = window.location
-  // useEffect(() => {
-  //   console.log('====================================');
-  //   console.log(local);
-  //   console.log('====================================');
-  // });
+  //var local = window.location
+  var [local] = useState(window.location)
+  var [userData,setUD] = useState({id: '',foto: '',nome: ''})
+   useEffect( () => {
+    if(userData['id'] == ''){
+      const func = async () => {
+        let id = localStorage.getItem('id')
+        let resultado = await login.getUsuario(id)
+        setUD(userData = resultado.data.linhas[0]) 
+      }
+      func()
+    } else {
+    }
+  },[local]);
   // componentDidMount(){}
   return (
     <IonApp>
@@ -64,7 +74,7 @@ const App: React.FC = (props) => {
           <Votar />
         </Route>
     </IonReactRouter>
-    {local.pathname !== '/login' && local.pathname != '/'
+    {local.pathname !== '/login' && local.pathname != '/' && local.pathname != '/avatar'
     ? 
     <IonTabs>
       <IonRouterOutlet></IonRouterOutlet>
@@ -86,7 +96,11 @@ const App: React.FC = (props) => {
           {/* <IonLabel>votar</IonLabel> */}
         </IonTabButton>
         <IonTabButton tab="conf">
-          <IonIcon icon={personCircle}></IonIcon>
+          
+          {userData["id"] !== ''
+          ? <img style={{width: 28,height: 28}} src={`/assets/avatares/${userData["foto"]}.svg`} alt="user img" /> 
+          : <IonIcon icon={personCircle}></IonIcon>}
+          
           {/* <IonLabel>conf</IonLabel> */}
         </IonTabButton>
 

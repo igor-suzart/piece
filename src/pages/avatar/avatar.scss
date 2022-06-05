@@ -1,0 +1,18 @@
+.avatar{
+    ion-toolbar{
+        padding: 0 12px;
+    }
+    ion-col{
+        cursor: pointer;
+    }
+    input[type=checkbox]{
+        display: none;
+    }
+    input[type = checkbox]:checked + label img{
+        border: 2px solid var(--ion-color-primary);
+        border-radius: 50000px;
+    }
+    .enviar{
+        padding: 0.75rem;
+    }
+}

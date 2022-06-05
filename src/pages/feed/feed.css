@@ -114,3 +114,7 @@ html {
   display: block;
   justify-content: center;
 }
+
+.showVotos {
+  text-align: center;
+}

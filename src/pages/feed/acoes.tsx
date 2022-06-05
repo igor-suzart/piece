@@ -1,4 +1,4 @@
-import { IonIcon } from "@ionic/react";
+import { IonCard, IonIcon } from "@ionic/react";
 import { banOutline, chatbox, heart,chatbubbles } from "ionicons/icons";
 import React from "react";
 import feed from "../../shared/services/feed";
@@ -38,6 +38,9 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
             var tenhocomentarios = await feed.getPostComents(this.props.idNot,2)
             if(tenhocomentarios.data.linhas.length > 0){
                 this.setState({coments: tenhocomentarios.data.linhas})
+                console.log('====================================');
+                console.log(tenhocomentarios.data.linhas);
+                console.log('====================================');
             } else {
                 this.setState({coments: []})
             }
@@ -94,7 +97,17 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                 </div>
                 <hr />
                 {this.state.coments.length > 0 
-                ? <h1>noticias tops</h1>
+                ? <div className="cometarios">
+                    {this.state.coments.map((x:any) =>{
+                        return(
+                            <IonCard>
+                                <div className="header">
+                                    <small>{x["comentario"]}</small>
+                                </div>
+                            </IonCard>
+                        )
+                    })}
+                </div>
                 : <div className="sem-not">
                     <h6>Sem comentários nessa notícia</h6>
                     <IonIcon icon={chatbubbles}></IonIcon>

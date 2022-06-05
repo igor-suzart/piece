@@ -72,6 +72,7 @@
   "description": "An Ionic project",
   "devDependencies": {
     "@ionic/app-scripts": "^3.2.4",
+    "@types/base-64": "^1.0.0",
     "@types/validator": "^13.7.2",
     "node-sass": "^7.0.1"
   }
