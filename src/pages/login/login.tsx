@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react'
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,IonButton,IonModal } from '@ionic/react';
-import PieceLogo from '../../assets/logo/logo-piece.svg'
+import PieceLogo from '../../assets/logo/logoFinal.png'
 import './login.scss'
 import ModalIn from './modal-in/modalIn'
 import ModalUp from './modal-up/modalUp'

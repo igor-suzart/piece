@@ -8,6 +8,24 @@ html{
 // }
 .noticia{
     height: 100vh;
+    .cometarios{
+        ion-card{
+            padding: 0.25rem 0.75rem;
+            .header{
+                display: flex;
+                align-items: center;
+                img{
+                    width: 1.75rem;
+                    height: 1.75rem;
+                    margin-right: .5rem;
+                }
+                span{
+                    font-size: 0.8rem;
+                    margin: 0;
+                }
+            }
+        }
+    }
     *{
         color: #fff;
     }

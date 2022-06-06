@@ -26,6 +26,9 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
             
         } else{
             var tenhoAcoes = await feed.getAcoes(this.props.idNot,id)
+            console.log('====================================');
+            console.log(tenhoAcoes);
+            console.log('====================================');
             if(tenhoAcoes.data.linhas.length > 0){
                 tenhoAcoes.data.linhas.forEach((pc:any) => {
                     if(pc.curtida == 1 || pc.curtida == '1'){
@@ -35,7 +38,7 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                     }
                 });
             }
-            var tenhocomentarios = await feed.getPostComents(this.props.idNot,2)
+            var tenhocomentarios = await feed.getPostComents(this.props.idNot,1)
             if(tenhocomentarios.data.linhas.length > 0){
                 this.setState({coments: tenhocomentarios.data.linhas})
                 console.log('====================================');
@@ -100,10 +103,12 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                 ? <div className="cometarios">
                     {this.state.coments.map((x:any) =>{
                         return(
-                            <IonCard>
+                            <IonCard key={x.idNot}>
                                 <div className="header">
-                                    <small>{x["comentario"]}</small>
+                                    <img src={`/assets/avatares/${x.foto}.svg`} />
+                                    <h6>{x.nome}</h6>
                                 </div>
+                                <span>{x["comentario"]}</span>
                             </IonCard>
                         )
                     })}

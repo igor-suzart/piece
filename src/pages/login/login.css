@@ -1,0 +1,35 @@
+* {
+  font-family: 'Exo',sans-serif;
+}
+
+.ion-page.login {
+  background-image: url("../../assets/background/bg.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.logo {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.logo img {
+  margin-top: 3rem;
+  width: 65%;
+}
+
+.title {
+  color: #fff;
+}
+
+.buttons {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 42px;
+}
+
+.buttons ion-button {
+  margin: 20px 0;
+}
