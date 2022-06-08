@@ -56,6 +56,11 @@ class Feed extends React.Component{
                                 </div>
                                 <div className="title">
                                     <h5>{not.title}</h5>
+                                    <div className="desktop">
+                                        <p>{not.description}</p>
+                                        <p><a href={not.source.url}>{not.source.name}</a></p>
+
+                                    </div>
                                     
                                 </div>
                             </div>

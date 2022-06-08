@@ -97,7 +97,7 @@ class VotarAcao extends React.Component<{id:string}>{
                 : 
                 <div className="showVotos">
                     <h6>Resultado parcial da votação</h6>
-                    <IonButton color="success" fill="outline">
+                    <IonButton color="success" fill="outline" style={{marginRight: '0.75rem'}}>
                         <IonIcon icon={chevronUp}></IonIcon>
                         <b>fato: </b>
                         <span>{this.state.votosFinal.curtidas.length}</span>

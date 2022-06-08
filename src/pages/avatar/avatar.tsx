@@ -8,7 +8,7 @@ class Avatar extends React.Component{
     state = {
         avatarList: this.avatarList,
         myImg: 20,
-        ir: ''
+        ir: '',
     }
     
 
@@ -50,7 +50,7 @@ class Avatar extends React.Component{
                             {this.state.avatarList !== []
                             ? this.state.avatarList.map((ind:number) => {
                                 return(
-                                <IonCol size='6' key={ind + 1} style={{textAlign: 'center'}}>
+                                <IonCol size='6' sizeMd='4' sizeLg='2' key={ind + 1} style={{textAlign: 'center'}}>
                                     <input type='checkbox' id={`${ind + 1}`} />
                                     <label htmlFor={`${ind + 1}`}>
                                         <img src={`/assets/avatares/${ind + 1}.svg`} 

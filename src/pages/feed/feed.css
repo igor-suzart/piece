@@ -2,6 +2,26 @@ html {
   scroll-behavior: smooth;
 }
 
+.list ion-item .conteudo {
+  padding: 1rem;
+}
+
+.list ion-item .header {
+  display: flex;
+  align-items: center;
+}
+
+.list ion-item .header img {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: .75rem;
+}
+
+.list ion-item p {
+  display: block;
+  margin: 0 !important;
+}
+
 .noticia {
   height: 100vh;
 }
@@ -50,6 +70,10 @@ html {
   border-radius: 0 0 .5rem .5rem;
   display: flex;
   align-items: center;
+}
+
+.noticia .title .desktop {
+  display: none;
 }
 
 .noticia hr {
@@ -137,4 +161,63 @@ html {
 
 .showVotos {
   text-align: center;
+}
+
+@media screen and (min-width: 650px) {
+  html {
+    font-size: 12px;
+  }
+  .noticia {
+    height: unset;
+    padding-bottom: 4rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .noticia {
+    height: unset;
+    padding: 3.5rem 20rem;
+  }
+  .noticia .title {
+    height: 15.25rem;
+    top: -15.25rem;
+    margin-bottom: -14.25rem;
+    flex-direction: column;
+    align-items: start;
+    padding: 0 5rem;
+  }
+  .noticia .title .desktop {
+    display: block;
+  }
+  .noticia .title h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  .noticia .desc {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1240px) {
+  html {
+    font-size: default;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .noticia {
+    padding: 4rem 30rem;
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .noticia {
+    padding: 4rem 40rem;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .noticia {
+    padding: 4rem 50rem;
+  }
 }

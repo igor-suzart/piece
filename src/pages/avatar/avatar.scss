@@ -16,3 +16,12 @@
         padding: 0.75rem;
     }
 }
+@media screen and (min-width: 1024px) {
+    .avatar{
+        ion-button{
+            width: 50%;
+            margin: 2rem auto;
+        }
+    }
+
+}

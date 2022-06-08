@@ -28,3 +28,28 @@
         margin: 20px 0;
     }
 }
+@media screen and (min-width:1024px) {
+    .ion-page.login{
+        background-image: url('../../assets/background/bg-desktop.png');
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    .logo{
+        img{
+            width: 20rem;
+        }
+    }
+    .buttons{
+        flex: 1 1;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: 0;
+        ion-button{
+            width: 50%;
+            margin: 12px;
+        }
+    }
+}
