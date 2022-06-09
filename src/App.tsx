@@ -29,15 +29,26 @@ import Avatar from './pages/avatar/avatar';
 import Feed from './pages/feed/feed';
 import Post from './pages/feed/post/post'
 import Votar from './pages/feed/votar'
+import Perfil from './pages/perfil/perfil'
 import { useEffect, useState } from 'react';
 import login from './shared/services/login';
 
 setupIonicReact();
 const App: React.FC = (props) => {
   //var local = window.location
-  var [local] = useState(window.location)
+  var [local,setLocal] = useState(window.location)
   var [userData,setUD] = useState({id: '',foto: '',nome: ''})
+  var [showBar,setSB] = useState(false)
+  const mudeLocal = (meuBool:any) =>{
+    setSB(showBar = meuBool)
+  }
    useEffect( () => {
+     console.log(local)
+     if(local.pathname !== '/login' && local.pathname !== '/' && local.pathname !== '/avatar'){
+       setSB(showBar = true)
+     } else {
+       setSB(showBar = false)
+     }
     if(userData['id'] == ''){
       const func = async () => {
         let id = localStorage.getItem('id')
@@ -53,7 +64,7 @@ const App: React.FC = (props) => {
     <IonApp>
     <IonReactRouter>
         <Route exact path="/login">
-          <Login />
+          <Login changeRoute={mudeLocal} />
         </Route>
         <Route exact path="/">
           <Redirect to="/login" />
@@ -73,8 +84,11 @@ const App: React.FC = (props) => {
         <Route exact path='/votar'>
           <Votar />
         </Route>
+        <Route exact path='/perfil'>
+          <Perfil />
+        </Route>
     </IonReactRouter>
-    {local.pathname !== '/login' && local.pathname != '/' && local.pathname != '/avatar'
+    {(local.pathname !== '/login' && local.pathname != '/' && local.pathname != '/avatar') || showBar
     ? 
     <IonTabs>
       <IonRouterOutlet></IonRouterOutlet>
@@ -95,7 +109,7 @@ const App: React.FC = (props) => {
           <IonIcon icon={trailSignOutline}></IonIcon>
           {/* <IonLabel>votar</IonLabel> */}
         </IonTabButton>
-        <IonTabButton tab="conf">
+        <IonTabButton tab="conf" href='/perfil'>
           
           {userData["id"] !== ''
           ? <img style={{width: 28,height: 28}} src={`/assets/avatares/${userData["foto"]}.svg`} alt="user img" /> 

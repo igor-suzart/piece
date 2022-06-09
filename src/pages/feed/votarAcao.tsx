@@ -18,7 +18,8 @@ class VotarAcao extends React.Component<{id:string}>{
         justificativa: '',
         minhaNoticia: '',
         votos: [],
-        votosFinal: {curtidas: [],dislikes: []}
+        votosFinal: {curtidas: [],dislikes: []},
+        meuvoto: false
 
     }
     async getAcoes(){
@@ -27,20 +28,25 @@ class VotarAcao extends React.Component<{id:string}>{
     async lideAcoes(){
         let curtidas:Array<string> = []
         let dislikes:Array<string> = []
+        let id = localStorage.getItem('id')
+        let meuvoto = false
         this.state.votos.forEach((v:any) => {
+            if(v.idUser == id){
+                 meuvoto = true
+            }
             if(v.curtida == '1'){
                 curtidas.push(v)
             } else if(v.dislike == '1'){
                 dislikes.push(v)
             }
         })
-        await this.setState({votosFinal: {curtidas: curtidas,dislikes:dislikes}})
+        await this.setState({votosFinal: {curtidas: curtidas,dislikes:dislikes},meuvoto: meuvoto})
     }
     async componentDidMount(){
         var resultado:any = await this.getAcoes()
         console.log(resultado)
         if(resultado.data.linhas.length > 0){
-            this.setState({showResul:true,votos:resultado.data.linhas})
+            this.setState({showResul:true,votos:resultado.data.linhas,meuvoto: false})
             this.lideAcoes()
         }
     }
@@ -83,7 +89,7 @@ class VotarAcao extends React.Component<{id:string}>{
                     
 
                 </IonPopover>
-                {!this.state.showResul ?
+                {this.state.meuvoto == false || !this.state.showResul ?
                     <div className="votar">
                 
                     <IonButton size='large' onClick={() => {
@@ -96,6 +102,7 @@ class VotarAcao extends React.Component<{id:string}>{
                 </div>
                 : 
                 <div className="showVotos">
+                    <p>{this.state.meuvoto ? 'true' : 'false'}</p>
                     <h6>Resultado parcial da votação</h6>
                     <IonButton color="success" fill="outline" style={{marginRight: '0.75rem'}}>
                         <IonIcon icon={chevronUp}></IonIcon>

@@ -12,15 +12,16 @@ class Feed extends React.Component{
     }
     height = window.screen.height;
     async componentDidMount(){
+        let local = window.location
         var id = localStorage.getItem('id')
         if(!id){
             console.log('n to logado');
             
         }
-        // var meuFeed = await feed.getMainFeed(1)
-        // this.setState({feed:meuFeed.data.articles})
-        var meuFeed:any = feed.offlineFeed
-        this.setState({feed:meuFeed})
+        var meuFeed = await feed.getMainFeed(1)
+        this.setState({feed:meuFeed.data.articles})
+        // var meuFeed:any = feed.offlineFeed
+        // this.setState({feed:meuFeed})
         console.log(meuFeed);
              
     }

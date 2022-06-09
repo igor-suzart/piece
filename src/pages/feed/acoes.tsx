@@ -26,9 +26,9 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
             
         } else{
             var tenhoAcoes = await feed.getAcoes(this.props.idNot,id)
-            console.log('====================================');
-            console.log(tenhoAcoes);
-            console.log('====================================');
+            // console.log('====================================');
+            // console.log(tenhoAcoes);
+            // console.log('====================================');
             if(tenhoAcoes.data.linhas.length > 0){
                 tenhoAcoes.data.linhas.forEach((pc:any) => {
                     if(pc.curtida == 1 || pc.curtida == '1'){
@@ -41,9 +41,9 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
             var tenhocomentarios = await feed.getPostComents(this.props.idNot,1)
             if(tenhocomentarios.data.linhas.length > 0){
                 this.setState({coments: tenhocomentarios.data.linhas})
-                console.log('====================================');
-                console.log(tenhocomentarios.data.linhas);
-                console.log('====================================');
+                // console.log('====================================');
+                // console.log(tenhocomentarios.data.linhas);
+                // console.log('====================================');
             } else {
                 this.setState({coments: []})
             }
@@ -60,7 +60,7 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
         }
         let id = localStorage.getItem('id')
         var meuLike = await feed.postLike(this.props.idNot,id)
-        console.log(meuLike);
+        // console.log(meuLike);
         this.setState({curti:true})
         // var meuFeed:any = this.state.feed
         // meuFeed[indice]['like'] = true
@@ -72,7 +72,7 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
         }
         let id = localStorage.getItem('id')
         var meuDislike = await feed.postDislike(this.props.idNot,id)
-        console.log(meuDislike);
+        // console.log(meuDislike);
         this.setState({nCurti:true})
         
         // var meuFeed:any = this.state.feed

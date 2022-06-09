@@ -27,6 +27,7 @@
 
 .post ion-card {
   padding: 0.5rem;
+  padding-bottom: 8rem;
 }
 
 .post ion-card .flex {
