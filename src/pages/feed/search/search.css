@@ -1,0 +1,47 @@
+.pesquisa {
+  color: #fff;
+  justify-content: flex-start;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+
+.pesquisa ion-toolbar {
+  padding: 0 .75rem;
+}
+
+.pesquisa .insira {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.pesquisa .insira ion-input {
+  width: auto;
+  background-color: #fff;
+  border: 1px solid #8e51ff;
+  border-radius: .25rem;
+  color: #8e51ff;
+}
+
+.pesquisa ion-card {
+  padding: 0.5rem;
+  padding-bottom: 8rem;
+}
+
+.pesquisa ion-card .flex {
+  display: flex;
+  justify-content: center;
+  margin: .5rem;
+}
+
+.pesquisa .previewNot {
+  height: 88%;
+}
+
+.pesquisa .nolink {
+  display: flex;
+  justify-content: center;
+  color: #888888;
+}

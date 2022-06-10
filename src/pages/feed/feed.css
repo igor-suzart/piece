@@ -23,7 +23,7 @@ html {
 }
 
 .noticia {
-  height: 100vh;
+  padding-bottom: 4rem;
 }
 
 .noticia .cometarios ion-card {

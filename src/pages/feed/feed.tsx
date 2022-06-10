@@ -1,16 +1,23 @@
-import { IonContent, IonIcon, IonPage, IonProgressBar } from '@ionic/react'
+import { IonContent, IonIcon, IonInfiniteScroll, IonInfiniteScrollContent, IonPage, IonProgressBar } from '@ionic/react'
 import React from 'react'
 import feed from '../../shared/services/feed'
 import "./feed.scss"
 import {heart,banOutline,chatbox} from 'ionicons/icons/'
 import FeedAcoes from './acoes'
+import FullNot from './fullNot/fullNot'
 class Feed extends React.Component{
     state = {
         feed: [],
         scroll: 0,
+        page: 1,
+        cancel: false,
+        verNot: false,
 
     }
-    height = window.screen.height;
+    constructor(props:any){
+        super(props)
+        this.fecharNot = this.fecharNot.bind(this)
+    }
     async componentDidMount(){
         let local = window.location
         var id = localStorage.getItem('id')
@@ -25,28 +32,25 @@ class Feed extends React.Component{
         console.log(meuFeed);
              
     }
+    fecharNot(){
+        this.setState({verNot:false})
+    }
+    async loadPage(event:any){
+        console.log(event)
+        this.setState({page: this.state.page += 1})
+        var meuFeed = await feed.getMainFeed(this.state.page)
+        console.log(this.state.page)
+        let novoFeed:any = this.state.feed.concat(meuFeed.data.articles) 
+        this.setState({feed: novoFeed,cancel:true})
+        console.log(novoFeed)
+        event.target.complete()
+    }
     render(){
         return(
-            <IonContent fullscreen={true} scrollEvents={true} onIonScrollStart={(event:any)=>{
-                event.preventDefault()
-                //console.log(event);
 
-                // if(event.target.detail.deltaY > 0){
-                //     this.state.scroll += 1
-                // } else if(this.state.scroll > 0 && event.target.detail.deltaY < 0) {
-                //     this.state.scroll -= 1
-                // } else {
-                //     this.state.scroll = 0
-                // }
-                // this.state.scroll += 1
-                // console.log(this.state.scroll);
-                
-                // let proxNot:any = document.getElementById(`not${this.state.scroll}`)
-                // proxNot.scrollIntoView({behavior:'smooth'});
-                
-                
-            }}
-            onIonScroll={(e:any) => e.preventDefault()} onIonScrollEnd={(e:any) => e.preventDefault()}>
+            <IonContent style={{paddingBottom: '5rem'}}>
+                <IonInfiniteScroll position='bottom' onIonInfinite={(e:any) => this.loadPage(e)}>
+                    <IonInfiniteScrollContent>
                 {this.state.feed.length > 0 
                 ?   this.state.feed.map((not:any,ind:number) =>{
                     return(
@@ -80,6 +84,8 @@ class Feed extends React.Component{
                         <IonProgressBar color='primary'></IonProgressBar>
                     </div>                            
                 }
+                </IonInfiniteScrollContent>
+                </IonInfiniteScroll>
             </IonContent>
 
         )

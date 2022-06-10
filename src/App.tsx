@@ -32,6 +32,7 @@ import Votar from './pages/feed/votar'
 import Perfil from './pages/perfil/perfil'
 import { useEffect, useState } from 'react';
 import login from './shared/services/login';
+import Search from './pages/feed/search/search';
 
 setupIonicReact();
 const App: React.FC = (props) => {
@@ -87,6 +88,9 @@ const App: React.FC = (props) => {
         <Route exact path='/perfil'>
           <Perfil />
         </Route>
+        <Route exact path='/pesquisa'>
+          <Search />
+        </Route>
     </IonReactRouter>
     {(local.pathname !== '/login' && local.pathname != '/' && local.pathname != '/avatar') || showBar
     ? 
@@ -97,7 +101,7 @@ const App: React.FC = (props) => {
           <IonIcon icon={newspaperOutline}></IonIcon>
           {/* <IonLabel>Notícias</IonLabel> */}
         </IonTabButton>
-        <IonTabButton tab="pesquisa">
+        <IonTabButton tab="pesquisa" href='/pesquisa'>
           <IonIcon icon={searchOutline}></IonIcon>
           {/* <IonLabel>Pesquisa</IonLabel> */}
         </IonTabButton>

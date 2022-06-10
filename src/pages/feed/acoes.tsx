@@ -38,7 +38,7 @@ class FeedAcoes extends React.Component<{idNot:string,indice:number}>{
                     }
                 });
             }
-            var tenhocomentarios = await feed.getPostComents(this.props.idNot,1)
+            var tenhocomentarios = await feed.getPostComents(this.props.idNot,3)
             if(tenhocomentarios.data.linhas.length > 0){
                 this.setState({coments: tenhocomentarios.data.linhas})
                 // console.log('====================================');
